@@ -1,3 +1,13 @@
-if u r seeing this then u are in deep shit , work hard avoid distractions
+create database SQLtest;
+use SQLtest;
 
-s add
+
+
+CREATE table city(
+ID int,
+NAME varchar(20),
+COUNTRTCODE varchar(18),
+District varchar(20),
+population integer
+);
+
