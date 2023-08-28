@@ -136,3 +136,34 @@ vowels. Your result cannot contain duplicates
 sol)   select distinct city from station where left(city,1) NOT IN ( 'a','i','e','o','u')
 and
     right(city,1) not in ( 'a','i','e','o','u');
+
+
+  Q.17 Write an SQL query that reports the products that were only sold in the first quarter of 2019. 
+  That is, between 2019-01-01 and 2019-03-31 inclusive. Return the result table in any order.   
+
+
+  sol) 
+
+       select p.product_id,p.product_name from product p
+  inner join sales s on p.product_id=s.product_id 
+  where p.product_id not in ( select product_id from sales where sales_date > '2019-03-31')
+  group by p.product_id having MAX(s.sales_date)<='2019-03-31'and min(s.sales_date) >='2019-01-01';
+
+
+
+   Q.18 Write an SQL query to find all the authors that viewed at least one of their own articles. 
+    Return the result table sorted by id in ascending order.
+
+  sol) 
+
+  
+SELECT 
+		DISTINCT a.author_id
+FROM 
+		views a
+JOIN   
+		views v
+ON 
+		a.author_id = v.viewer_id
+ORDER BY 
+		a.author_id;  
